@@ -9,8 +9,9 @@ import org.testng.annotations.Test;
 
 public class BmiCalcTest {
     private WebDriver driver;
-    private final String testingPageUrl = "https://healthunify.com/bmicalculator/";
+    private final String pageUrl = "https://healthunify.com/bmicalculator/";
     private final String weightAlertMessage = "Enter the value for weight";
+
     private final By weightField =  By.xpath("//input[@name='wg']");
     private final String weightValue = "110";
     private final String cmsFieldCheck = "241";
@@ -22,7 +23,8 @@ public class BmiCalcTest {
     private final By calculateButton = By.xpath("//input[@name='cc']");
     private final By categoryResult = By.xpath("//input[@name='desc']");
     private final By heightFirstValue =  By.xpath("//select[@name='opt2']");
-    private final By heightFirstValue1 =  By.xpath("//option[@value='1']");
+    private final By heightFirstValue1 =  By.xpath("//option[@value='1']");// Попробовать заменить
+    // на селекты
     private final By heightFirstValue2 =  By.xpath("//option[@value='2']");
     private final By heightFirstValue3 =  By.xpath("//option[@value='3']");
     private final By heightFirstValue4 =  By.xpath("//option[@value='4']");
@@ -51,7 +53,7 @@ public class BmiCalcTest {
 
     @Test
     public void checkNormalCategoryTest(){
-        driver.get(testingPageUrl);
+        driver.get(pageUrl);
         driver.findElement(weightField).sendKeys(weightValue);
         driver.findElement(weightTypeSelect).click();
         driver.findElement(weightTypeSelectKilograms).click();
@@ -67,7 +69,7 @@ public class BmiCalcTest {
     @Test
     public void checkGrowthPoundsInCmsConvertTest(){
         Actions actions = new Actions(driver);
-        driver.get(testingPageUrl);
+        driver.get(pageUrl);
         driver.findElement(weightField).sendKeys(weightValue);
         driver.findElement(weightTypeSelect).click();
         driver.findElement(weightTypeSelectKilograms).click();
@@ -81,7 +83,7 @@ public class BmiCalcTest {
 
     @Test
     public void checkAlertTest(){
-        driver.get(testingPageUrl);
+        driver.get(pageUrl);
         driver.findElement(calculateButton).click();
         String alertWindowText = driver.switchTo().alert().getText();
         Assert.assertEquals(weightAlertMessage, alertWindowText);
