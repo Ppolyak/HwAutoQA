@@ -13,6 +13,7 @@ public class bmiCalcTest {
     private final String weightAlertMessage = "Enter the value for weight";
     private final By weightField =  By.xpath("//input[@name='wg']");
     private final String weightValue = "110";
+    private String cmsFieldCheck;
     private final String categoryNormal = "Your category is Normal";
     private final By weightTypeSelect =  By.xpath("//select[@name='opt1']");
     private final By weightTypeSelectKilograms = By.xpath("//option[@value='kilograms']");
@@ -40,6 +41,10 @@ public class bmiCalcTest {
     private final By heightSecondValue9 =  By.xpath("//*[contains(text(), '9″')]");
     private final By heightSecondValue10 =  By.xpath("//*[contains(text(), '10″')]");
     private final By heightSecondValue11 =  By.xpath("//*[contains(text(), '11″')]");
+
+    public bmiCalcTest(String cmsFieldCheck) {
+        this.cmsFieldCheck = cmsFieldCheck;
+    }
 
     @BeforeClass
     public void openBrowser() {
@@ -73,9 +78,9 @@ public class bmiCalcTest {
         driver.findElement(heightFirstValue7).click();
         driver.findElement(heightSecondValue).click();
         driver.findElement(heightSecondValue11).click();
-        String example = "241";
+        cmsFieldCheck = "241";
         String abs = String.valueOf(driver.findElement(cmsField).getAttribute("value"));
-        Assert.assertEquals(example, abs);
+        Assert.assertEquals(cmsFieldCheck, abs);
     }
 
     @Test
