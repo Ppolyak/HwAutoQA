@@ -7,13 +7,13 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class bmiCalcTest {
+public class BmiCalcTest {
     private WebDriver driver;
     private final String testingPageUrl = "https://healthunify.com/bmicalculator/";
     private final String weightAlertMessage = "Enter the value for weight";
     private final By weightField =  By.xpath("//input[@name='wg']");
     private final String weightValue = "110";
-    private String cmsFieldCheck;
+    private final String cmsFieldCheck = "241";
     private final String categoryNormal = "Your category is Normal";
     private final By weightTypeSelect =  By.xpath("//select[@name='opt1']");
     private final By weightTypeSelectKilograms = By.xpath("//option[@value='kilograms']");
@@ -42,9 +42,6 @@ public class bmiCalcTest {
     private final By heightSecondValue10 =  By.xpath("//*[contains(text(), '10″')]");
     private final By heightSecondValue11 =  By.xpath("//*[contains(text(), '11″')]");
 
-    public bmiCalcTest(String cmsFieldCheck) {
-        this.cmsFieldCheck = cmsFieldCheck;
-    }
 
     @BeforeClass
     public void openBrowser() {
@@ -53,11 +50,11 @@ public class bmiCalcTest {
     }
 
     @Test
-    public void normalCategoryTest(){
+    public void checkNormalCategoryTest(){
         driver.get(testingPageUrl);
         driver.findElement(weightField).sendKeys(weightValue);
         driver.findElement(weightTypeSelect).click();
-        driver.findElement(weightTypeSelectKilograms);
+        driver.findElement(weightTypeSelectKilograms).click();
         driver.findElement(heightFirstValue).click();
         driver.findElement(heightFirstValue7).click();
         driver.findElement(heightSecondValue).click();
@@ -68,23 +65,22 @@ public class bmiCalcTest {
     }
 
     @Test
-    public void growthPoundsInCmsConvertTest(){
+    public void checkGrowthPoundsInCmsConvertTest(){
         Actions actions = new Actions(driver);
         driver.get(testingPageUrl);
         driver.findElement(weightField).sendKeys(weightValue);
         driver.findElement(weightTypeSelect).click();
-        driver.findElement(weightTypeSelectKilograms);
+        driver.findElement(weightTypeSelectKilograms).click();
         driver.findElement(heightFirstValue).click();
         driver.findElement(heightFirstValue7).click();
         driver.findElement(heightSecondValue).click();
         driver.findElement(heightSecondValue11).click();
-        cmsFieldCheck = "241";
         String abs = String.valueOf(driver.findElement(cmsField).getAttribute("value"));
         Assert.assertEquals(cmsFieldCheck, abs);
     }
 
     @Test
-    public void ThirdTest(){
+    public void checkAlertTest(){
         driver.get(testingPageUrl);
         driver.findElement(calculateButton).click();
         String alertWindowText = driver.switchTo().alert().getText();
