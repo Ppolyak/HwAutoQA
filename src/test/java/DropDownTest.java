@@ -39,7 +39,6 @@ public class DropDownTest {
         for (int i = 0; i < webElements.size(); i++){
             items.add(webElements.get(i).getText());
         }
-        /*System.out.println(items);*/
         Assert.assertEquals(items.toString(),dropDownItems);
     }
 
