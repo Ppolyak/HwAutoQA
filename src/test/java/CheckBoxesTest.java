@@ -48,7 +48,7 @@ public class CheckBoxesTest {
         ArrayList<WebElement> checkBoxes = (ArrayList<WebElement>) driver.findElements(checkBoxSelector);
         WebElement element = checkBoxes.get(firstCheckBox);
         element.click();
-        boolean isFirstChecked = checkBoxes.get(firstCheckBox).isSelected();
+        boolean isFirstChecked = element.isSelected();
         Assert.assertEquals(isFirstChecked,checkedCheckBox);
     }
 
@@ -67,7 +67,7 @@ public class CheckBoxesTest {
         ArrayList<WebElement> checkBoxes = (ArrayList<WebElement>) driver.findElements(checkBoxSelector);
         WebElement element = checkBoxes.get(secondCheckBox);
         element.click();
-        boolean isSecondCheckBoxChecked = checkBoxes.get(secondCheckBox).isSelected();
+        boolean isSecondCheckBoxChecked = element.isSelected();
         Assert.assertEquals(isSecondCheckBoxChecked,uncheckedCheckBox);
     }
 
