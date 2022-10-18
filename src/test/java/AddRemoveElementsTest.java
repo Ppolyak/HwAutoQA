@@ -1,6 +1,8 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -17,8 +19,12 @@ public class AddRemoveElementsTest {
 
     @BeforeClass
     public void openBrowser() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
-        driver = new ChromeDriver();
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--incognito");
+        chromeOptions.addArguments("--disable-popup-blocking");
+        driver = new ChromeDriver(chromeOptions);
+        driver.manage().window().maximize();
     }
 
     @Test
