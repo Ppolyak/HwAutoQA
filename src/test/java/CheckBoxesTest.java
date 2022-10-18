@@ -21,7 +21,6 @@ public class CheckBoxesTest {
     private final int secondCheckBox = 1;
     private final boolean uncheckedCheckBox = false;
     private final boolean checkedCheckBox = true;
-   /* ArrayList<WebElement> checkBoxes = (ArrayList<WebElement>) driver.findElements(checkBoxSelector);*/
 
 
     @BeforeClass
