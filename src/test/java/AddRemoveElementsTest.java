@@ -36,7 +36,7 @@ public class AddRemoveElementsTest {
         Boolean exist = driver.findElement(removeElement).isDisplayed();
         int actualquantity = driver.findElements(removeElement).size();
         Assert.assertEquals(actualquantity,quantityElementsAfterDeleteOne);
-        //System.out.println(actualquantity);
+
     }
 
     @AfterClass
