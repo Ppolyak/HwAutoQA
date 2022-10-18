@@ -57,7 +57,7 @@ public class InputsTest {
         Assert.assertEquals(putNumber,inputValue);
     }
 
-    /*@AfterClass
+    @AfterClass
     public void closeBrowser(){
-        driver.quit();}*/
+        driver.quit();}
 }
