@@ -16,7 +16,6 @@ public class CheckBoxesTest {
     private WebDriver driver;
     private final String pageUrl = "http://the-internet.herokuapp.com/checkboxes";
     private final By checkBoxSelector = By.cssSelector("[type=checkbox]");
-    private final String checkBoxSelectorr = "[type=checkbox]";
     private final int firstCheckBox = 0;
     private final int secondCheckBox = 1;
     private final boolean uncheckedCheckBox = false;
