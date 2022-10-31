@@ -13,12 +13,12 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.sql.Driver;
 import java.time.Duration;
 
 public class DynamicControl {
 
     private WebDriver driver;
-
     private final String PAGE_URL = "http://the-internet.herokuapp.com/dynamic_controls";
     /*@FindBy (xpath = "//input[@type='checkbox']")
     private WebElement checkBox;*/
@@ -31,6 +31,11 @@ public class DynamicControl {
     private final By itsEnabledText = By.xpath("//p[@id='message']");
     @FindBy (xpath = "//p[@id='message']")
     private WebElement gone;
+    @FindBy (xpath = "//form[@id='checkbox-example']/button[@type='button']")
+    private WebElement rmButton;
+    public void clickContinueButton(){
+        rmButton.click();
+    }
 
     @BeforeClass
     public void openBrowser() {
@@ -79,9 +84,6 @@ public class DynamicControl {
         Boolean inputEnable = driver.findElement(inputField).isEnabled();
         Assert.assertTrue(inputEnable);
     }
-
-
-
 
     @AfterClass
     public void closeBrowser(){
