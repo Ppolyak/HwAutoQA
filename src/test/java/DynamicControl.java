@@ -22,7 +22,6 @@ public class DynamicControl {
     private final String PAGE_URL = "http://the-internet.herokuapp.com/dynamic_controls";
     /*@FindBy (xpath = "//input[@type='checkbox']")
     private WebElement checkBox;*/
-
     private final By checkBox = By.xpath("//input[@type='checkbox']");
     private final By goneText = By.xpath("//p[@id='message']");
     private final By removeButton = By.xpath("//form[@id='checkbox-example']/button[@type='button']");
